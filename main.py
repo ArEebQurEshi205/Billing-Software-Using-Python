@@ -34,17 +34,20 @@ class Bill_App:
         # ------------ Title Section --------
 
         lbl_title=Label(self.root,text="BILLING SOFTWARE",font=("Arial",26,"bold","italic"),bg="black",fg="white")
-        lbl_title.place(x=0,y=120,width=1400,height=45)
+        lbl_title.place(x=0,y=122,width=1400,height=45)
 
         Main_Frame=Frame(self.root,bd=5,relief=GROOVE,bg="white")
-        Main_Frame.place(x=0,y=167,width=1530,height=620)
+        Main_Frame.place(x=0,y=169,width=1530,height=620)
 
         # --- Customer LabelFrame
         Cust_Frame=LabelFrame(Main_Frame,text="Customer",font=("times new roman",12,"bold"),bg="white",fg="black")
         Cust_Frame.place(x=7,y=2,width=350,height=140)
 
         self.lbl_mob=Label(Cust_Frame,text="Mobile No:",font=("times new roman",12,"bold"),bg="white",fg="black")
-        self.lbl_mob.grid(row=0,column=0)
+        self.lbl_mob.grid(row=0,column=0,stick=W,padx=5,pady=2)
+
+        self.entry_mob=ttk.Entry(Cust_Frame,font=("times new roman",12,"bold"),width=24)
+        self.entry_mob.grid(row=0,column=1)
 
 
 if __name__ == '__main__':
