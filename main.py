@@ -39,15 +39,26 @@ class Bill_App:
         Main_Frame=Frame(self.root,bd=5,relief=GROOVE,bg="white")
         Main_Frame.place(x=0,y=169,width=1530,height=620)
 
-        # --- Customer LabelFrame
+        # ------- Customer Frame --------
         Cust_Frame=LabelFrame(Main_Frame,text="Customer",font=("times new roman",12,"bold"),bg="white",fg="black")
         Cust_Frame.place(x=7,y=2,width=350,height=140)
-
-        self.lbl_mob=Label(Cust_Frame,text="Mobile No:",font=("times new roman",12,"bold"),bg="white",fg="black")
+       
+        # -------- Mobile Info Section ---------
+        self.lbl_mob=Label(Cust_Frame,text="Mobile Number:",font=("times new roman",12,"bold"),bg="white",fg="black")
         self.lbl_mob.grid(row=0,column=0,stick=W,padx=5,pady=2)
-
         self.entry_mob=ttk.Entry(Cust_Frame,font=("times new roman",12,"bold"),width=24)
         self.entry_mob.grid(row=0,column=1)
+        # ------- Customer Info Section
+        self.lblCustName=Label(Cust_Frame,text="Customer Name:",font=("times new roman",12,"bold"),bg="white",fg="black")
+        self.lblCustName.grid(row=1,column=0,stick=W,padx=5,pady=2)
+        self.txtCustName=ttk.Entry(Cust_Frame,font=("times new roman",12,"bold"),width=24)
+        self.txtCustName.grid(row=1,column=1,sticky=W,padx=5,pady=2)
+        # -------- Gmail info section 
+        self.lblEmail=Label(Cust_Frame,text="Email:",font=("times new roman",12,"bold"),bg="white",fg="black")
+        self.lblEmail.grid(row=2,column=0,stick=W,padx=5,pady=2)
+        self.txtEmail=ttk.Entry(Cust_Frame,font=("times new roman",12,"bold"),width=24)
+        self.txtEmail.grid(row=2,column=1,sticky=W,padx=5,pady=2)
+
 
 
 if __name__ == '__main__':
