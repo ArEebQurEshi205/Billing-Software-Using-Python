@@ -5,7 +5,7 @@ from PIL import Image,ImageTk #pip install pillow
 class Bill_App:
     def __init__(self,root):
         self.root=root
-        self.root.geometry("1530x800+0+0")
+        self.root.geometry("1500x800+0+0")
         self.root.title("Billing Software")
 
 
@@ -96,7 +96,16 @@ class Bill_App:
         self.ComboQty.grid(row=1,column=3,stick=W,padx=5,pady=2)
 
 
+#-----------------------------------------------------------------------------------------------------------
+        # ---------- Right Frame Bill Section ----------------
+        RighLabelFrame=LabelFrame(Main_Frame,text="Bill Section",font=("Arial Black",14,"bold"),bg="black",fg="white",bd=8)
+        RighLabelFrame.place(x=920,y=45,width=427,height=440)
 
+        scroll_y=Scrollbar(RighLabelFrame,orient=VERTICAL)
+        self.textarea=Text(RighLabelFrame,yscrollcommand=scroll_y.set,bg="black",fg="white",font=("Arial Black",12,"bold"))
+        scroll_y.pack(side=RIGHT,fill=Y)
+        scroll_y.config(command=self.textarea.yview)
+        self.textarea.pack(fill=BOTH,expand=1)
 
 
 
