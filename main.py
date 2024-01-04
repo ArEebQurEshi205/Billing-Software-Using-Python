@@ -8,6 +8,7 @@ class Bill_App:
         self.root.geometry("1530x800+0+0")
         self.root.title("Billing Software")
 
+
         # ----------- Image Section -----------
         # Image 1
         img=Image.open("image/frontImage1.png")
@@ -40,32 +41,61 @@ class Bill_App:
         Main_Frame.place(x=0,y=169,width=1530,height=620)
 # ---------------------------------------------------------------------------------------------------------#
         # ------- Customer Frame --------
-        Cust_Frame=LabelFrame(Main_Frame,text="Customer",font=("times new roman",12,"bold"),bg="white",fg="black")
-        Cust_Frame.place(x=7,y=2,width=350,height=140)
+        Cust_Frame=LabelFrame(Main_Frame,text="Customer Details:",font=("Arial Black",12,"bold"),bg="Black",fg="white",bd=8)
+        Cust_Frame.place(x=2,y=1,width=350,height=140)
        
         # -------- Mobile Info Section ---------
-        self.lbl_mob=Label(Cust_Frame,text="Mobile Number:",font=("times new roman",12,"bold"),bg="white")
+        self.lbl_mob=Label(Cust_Frame,text="Mobile Number:",font=("arial",12,"bold"),bg="black",fg="white")
         self.lbl_mob.grid(row=0,column=0,stick=W,padx=5,pady=2)
         self.entry_mob=ttk.Entry(Cust_Frame,font=("times new roman",10,"bold"),width=24)
         self.entry_mob.grid(row=0,column=1)
         # ------- Customer Info Section
-        self.lblCustName=Label(Cust_Frame,font=("arial",12,"bold"),bg="white",text="Customer Name:",bd=4)
+        self.lblCustName=Label(Cust_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="Customer Name:",bd=4)
         self.lblCustName.grid(row=1,column=0,stick=W,padx=5,pady=2)
-        self.txtCustName=ttk.Entry(Cust_Frame,font=("arial",10,"bold"),width=24)
+        self.txtCustName=ttk.Entry(Cust_Frame,font=('arial',10,'bold'),width=24)
         self.txtCustName.grid(row=1,column=1,sticky=W,padx=5,pady=2)
         # -------- Gmail info section 
-        self.lblEmail=Label(Cust_Frame,font=("arial",12,"bold"),bg="white",text="Email:",bd=4)
+        self.lblEmail=Label(Cust_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="Email:",bd=4)
         self.lblEmail.grid(row=2,column=0,stick=W,padx=5,pady=2)
-        self.txtEmail=ttk.Entry(Cust_Frame,font=("arial",10,"bold"),width=24)
+        self.txtEmail=ttk.Entry(Cust_Frame,font=('arial',10,'bold'),width=24)
         self.txtEmail.grid(row=2,column=1,sticky=W,padx=5,pady=2)
 # ---------------------------------------------------------------------------------------------------------#
         # ------- Product Frame --------
-        Product_Frame=LabelFrame(Main_Frame,text="Product",font=("times new roman",12,"bold"),bg="white",fg="black")
-        Product_Frame.place(x=367,y=2,width=550,height=140)
+        Product_Frame=LabelFrame(Main_Frame,text="Product:",font=('Arial Black',13,'bold'),bg="black",fg="white",bd=8)
+        Product_Frame.place(x=355,y=1,width=560,height=140)
 
         # ------- Product Category -------
-        self.lblCategory=Label(Product_Frame,font=("times new roman",12,"bold"),bg="white",text="Select Category:",bd=4)
-        self.lblCategory.grid(row=2,column=0,stick=W,padx=5,pady=2)
+        self.lblCategory=Label(Product_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="Select Category:",bd=4)
+        self.lblCategory.grid(row=0,column=0,stick=W,padx=5,pady=2)
+
+        self.Combo_Category=ttk.Combobox(Product_Frame,font=('arial',8,'bold'),width=24,state="readonly")
+        self.Combo_Category.grid(row=0,column=1,stick=W,padx=5,pady=2)
+        # ------- Product Sub - Category -------
+        self.lblSubCategory=Label(Product_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="SubCategory:",bd=4)
+        self.lblSubCategory.grid(row=1,column=0,stick=W,padx=5,pady=2)
+
+        self.ComboSubCategory=ttk.Combobox(Product_Frame,state="readonly",font=('arial',8,'bold'),width=24)
+        self.ComboSubCategory.grid(row=1,column=1,stick=W,padx=5,pady=2)
+        # ------- Product Name -------
+        self.lblproduct=Label(Product_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="Product Name:",bd=4)
+        self.lblproduct.grid(row=2,column=0,stick=W,padx=5,pady=2)
+
+        self.Combo_Product=ttk.Combobox(Product_Frame,state="readonly",font=('arial',8,'bold'),width=24)
+        self.Combo_Product.grid(row=2,column=1,stick=W,padx=5,pady=2)
+        # ------- Price -------
+        self.Price=Label(Product_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="Price:",bd=4)
+        self.Price.grid(row=0,column=2,stick=W,padx=5,pady=2)
+
+        self.ComboPrice=ttk.Combobox(Product_Frame,state="readonly",font=('arial',5,'bold'),width=24)
+        self.ComboPrice.grid(row=0,column=3,stick=W,padx=5,pady=2)
+        # ------- Quantity -------
+        self.lblQty=Label(Product_Frame,font=('arial',12,'bold'),bg="black",fg="white",text="Quantity:",bd=4)
+        self.lblQty.grid(row=1,column=2,stick=W,padx=5,pady=2)
+
+        self.ComboQty=ttk.Entry(Product_Frame,font=('arial',6,'bold'),width=26)
+        self.ComboQty.grid(row=1,column=3,stick=W,padx=5,pady=2)
+
+
 
 
 
