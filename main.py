@@ -95,7 +95,8 @@ class Bill_App:
 
         self.ComboQty=ttk.Entry(Product_Frame,font=('arial',6,'bold'),width=14)
         self.ComboQty.grid(row=1,column=3,stick=W,padx=5,pady=2)
-
+# ----------  -------------------- ---------------- ------------------------- ------------------------
+        # Middle Frame
 
 #-----------------------------------------------------------------------------------------------------------
         # --------- Search --------
@@ -103,7 +104,13 @@ class Bill_App:
         Search_Frame.place(x=923,y=2,width=413,height=38.5)  
 
         self.lblBill=Label(Search_Frame,font=('Courier New',13,'bold'),bg="black",fg="white",text="Bill No:")
-        self.lblBill.grid(row=0,column=0,sticky=W,padx=1,pady=5)     
+        self.lblBill.grid(row=0,column=0,sticky=W,padx=9,pady=4)
+
+        self.txt_Entry_Search=ttk.Entry(Search_Frame,font=('arial',11,'bold'),width=19)
+        self.txt_Entry_Search.grid(row=0,column=1,sticky=W,padx=5,pady=5)  
+
+        self.BtnSearch=Button(Search_Frame,text="Search",font=('arial black',8,'bold'),bg="white",fg="black",width=10,cursor="hand2")
+        self.BtnSearch.grid(row=0,column=2,padx=15,pady=1)  
        
         # ---------- Right Frame Bill Section ----------------
         RighLabelFrame=LabelFrame(Main_Frame,text="Bill Section:",font=("Courier New",14,"bold"),bg="black",fg="white",bd=6)
