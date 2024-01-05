@@ -97,6 +97,16 @@ class Bill_App:
         self.ComboQty.grid(row=1,column=3,stick=W,padx=5,pady=2)
 # ----------  -------------------- ---------------- ------------------------- ------------------------
         # Middle Frame
+        MiddleFrame=Frame(Main_Frame,bd=10,bg="black")
+        MiddleFrame.place(x=2,y=137,width=915,height=247)
+
+        # Middle Image 1
+        middleimg=Image.open("image/dashboard image.png")
+        middleimg=middleimg.resize((905,237),Image.AFFINE)
+        self.photomiddleimg=ImageTk.PhotoImage(middleimg)
+        lbl_middleimg=Label(MiddleFrame,image=self.photomiddleimg)
+        lbl_middleimg.place(x=-4.5,y=-4.5,width=905,height=237)
+        
 
 #-----------------------------------------------------------------------------------------------------------
         # --------- Search --------
