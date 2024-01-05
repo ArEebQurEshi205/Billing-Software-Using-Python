@@ -109,15 +109,51 @@ class Bill_App:
         self.textarea.pack(fill=BOTH,expand=1)
 
         # ------------- Bill Counter  Section --------------
-        Bottom_Frame=LabelFrame(Main_Frame,text="Bill Recipt",font=("Courier New",14,"bold"),bg="black",fg="white")
-        Bottom_Frame.place(x=0,y=390,width=1337,height=139)
+        Bottom_Frame=LabelFrame(Main_Frame,text="Bill Recipt",font=("Courier New",15,"bold"),bg="black",fg="white")
+        Bottom_Frame.place(x=2,y=390,width=1335,height=139)
         
         # ------ Sub total Section ------
-        self.lblSubTotal=Label(Bottom_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Sub Total:",bd=5)
-        self.lblSubTotal.grid(row=0,column=0,sticky=W,padx=5,pady=2)
-
-        self.EntrySubTotal=ttk.Entry(Bottom_Frame,font=('arial',10,'bold'),width=23)
+        self.lblSubTotal=Label(Bottom_Frame,font=('Courier New',14,'bold'),bg="black",fg="white",text="Sub Total:",bd=5)
+        self.lblSubTotal.grid(row=0,column=0,sticky=W,padx=20,pady=2)
+        self.EntrySubTotal=ttk.Entry(Bottom_Frame,font=('arial',13,'bold'),width=17)
         self.EntrySubTotal.grid(row=0,column=1,sticky=W,padx=5,pady=2)
+        # ------ Tax total Section ------
+        self.lbl_tax=Label(Bottom_Frame,font=('Courier New',14,'bold'),bg="black",fg="white",text="Gov Tax:",bd=5)
+        self.lbl_tax.grid(row=1,column=0,sticky=W,padx=20,pady=2)
+        self.txt_tax=ttk.Entry(Bottom_Frame,font=('arial',13,'bold'),width=17)
+        self.txt_tax.grid(row=1,column=1,sticky=W,padx=5,pady=2)
+        # ------ Total Section ------
+        self.lbl_Total=Label(Bottom_Frame,font=('Courier New',14,'bold'),bg="black",fg="white",text="Total:",bd=5)
+        self.lbl_Total.grid(row=2,column=0,sticky=W,padx=20,pady=2)
+        self.txt_Total=ttk.Entry(Bottom_Frame,font=('arial',13,'bold'),width=17)
+        self.txt_Total.grid(row=2,column=1,sticky=W,padx=5,pady=2)
+
+        # ------ ---------Bill Section Button Section--------- ------
+        Btn_Frame=Frame(Bottom_Frame,bd=5,bg="white")
+        Btn_Frame.place(x=400,y=17)
+        # Button 1
+        self.BtnAddToCart=Button(Btn_Frame,height=2,text="Add To Cart",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+        self.BtnAddToCart.grid(row=0,column=0)
+        # Button 2
+        self.Btngenerate_bill=Button(Btn_Frame,height=2,text="Generate Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+        self.Btngenerate_bill.grid(row=0,column=1)
+        # Button 3
+        self.BtnSave=Button(Btn_Frame,height=2,text="Save Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+        self.BtnSave.grid(row=0,column=2)
+        # Button 4
+        self.BtnPrint=Button(Btn_Frame,height=2,text="Print",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+        self.BtnPrint.grid(row=0,column=3)
+        # Button 5
+        self.BtnClear=Button(Btn_Frame,height=2,text="Clear",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+        self.BtnClear.grid(row=0,column=4)
+        # Button 6
+        self.BtnExit=Button(Btn_Frame,height=2,text="Exit",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+        self.BtnExit.grid(row=0,column=5)
+
+
+        
+
+
 
 
 
