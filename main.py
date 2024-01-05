@@ -102,7 +102,7 @@ class Bill_App:
         Search_Frame=Frame(Main_Frame,bd=2,bg="black")
         Search_Frame.place(x=923,y=2,width=413,height=38.5)  
 
-        self.lblBill=Label(Search_Frame,font=('arial',13,'bold'),bg="black",fg="white",text="Bill No:")
+        self.lblBill=Label(Search_Frame,font=('Courier New',13,'bold'),bg="black",fg="white",text="Bill No:")
         self.lblBill.grid(row=0,column=0,sticky=W,padx=1,pady=5)     
        
         # ---------- Right Frame Bill Section ----------------
