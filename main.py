@@ -141,7 +141,7 @@ class Bill_App:
         # Product Category
         self.lblCategory=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Select Category:",bd=4)
         self.lblCategory.grid(row=0,column=0,stick=W,padx=5,pady=2)
-        self.Combo_Category=ttk.Combobox(Product_Frame,font=('arial',8,'bold'),width=24,state="readonly")
+        self.Combo_Category=ttk.Combobox(Product_Frame,value=self.Category,font=('arial',8,'bold'),width=24,state="readonly")
         self.Combo_Category.grid(row=0,column=1,stick=W,padx=5,pady=2)
         # Product Sub-Category
         self.lblSubCategory=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="SubCategory:",bd=4)
