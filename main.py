@@ -7,6 +7,7 @@ class Bill_App:
         self.root=root
         self.root.geometry("1500x800+0+0")
         self.root.title("Billing Software")
+        
 #--------------------#--------------------#--------Ux Section ------------#--------------------#--------------------      
         #---- Product Categories List -----
         self.Category=["Select Option","BreakFast","Lunch","Dinner"]
@@ -58,7 +59,7 @@ class Bill_App:
         self.price_FusionCreations= 280
         
         # 3) Sub Category Part (Dinner)
-        self.SubCategoryDinner=["Chicken Dishes","Beef Dishes","Pizza's Varieties","Burgers"]
+        self.SubCategoryDinner=["Chicken Dishes","Beef Dishes","Pizza's Varieties","Burgurs"]
         #Product Name Part
         # i) Chicken Dishes
         self.ChickenDishes=["Chicken Qourma","Chicken Nihari","Chicken Karahi","Chicken Biryani","Chicken Puloa"]
@@ -78,8 +79,8 @@ class Bill_App:
         self.price_Tikka= 300
         self.price_Fajita= 320
         self.price_Creamy= 240
-        # iv) Burger
-        self.Burgers=["Zinger Burgur","Beef Burgur","Double Zinger Burgur"]
+        # iv) Burgur
+        self.Burgurs=["Zinger Burgur","Beef Burgur","Double Zinger Burgur"]
         self.price_ZingerBurgur=250
         self.price_BeefBurgur=280
         self.price_DoubleZingerBurgur= 350
@@ -142,17 +143,20 @@ class Bill_App:
         self.lblCategory=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Select Category:",bd=4)
         self.lblCategory.grid(row=0,column=0,stick=W,padx=5,pady=2)
         self.Combo_Category=ttk.Combobox(Product_Frame,value=self.Category,font=('arial',8,'bold'),width=24,state="readonly")
+        self.Combo_Category.current(0)
         self.Combo_Category.grid(row=0,column=1,stick=W,padx=5,pady=2)
+        self.Combo_Category.bind("<<ComboboxSelected>>",self.Categories)
         # Product Sub-Category
         self.lblSubCategory=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="SubCategory:",bd=4)
         self.lblSubCategory.grid(row=1,column=0,stick=W,padx=5,pady=2)
-        self.ComboSubCategory=ttk.Combobox(Product_Frame,state="readonly",font=('arial',8,'bold'),width=24)
+        self.ComboSubCategory=ttk.Combobox(Product_Frame,values=[""],state="readonly",font=('arial',8,'bold'),width=24)
         self.ComboSubCategory.grid(row=1,column=1,stick=W,padx=5,pady=2)
+        self.ComboSubCategory.bind("<<ComboboxSelected>>",self.Product_add)
         # Product Name 
         self.lblproduct=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Product Name:",bd=4)
         self.lblproduct.grid(row=2,column=0,stick=W,padx=5,pady=2)
-        self.Combo_Product=ttk.Combobox(Product_Frame,state="readonly",font=('arial',8,'bold'),width=24)
-        self.Combo_Product.grid(row=2,column=1,stick=W,padx=5,pady=2)
+        self.ComboProduct=ttk.Combobox(Product_Frame,state="readonly",font=('arial',8,'bold'),width=24)
+        self.ComboProduct.grid(row=2,column=1,stick=W,padx=5,pady=2)
         # Price
         self.Price=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Price:",bd=4)
         self.Price.grid(row=0,column=2,stick=W,padx=5,pady=2)
@@ -239,9 +243,67 @@ class Bill_App:
         self.BtnExit.grid(row=0,column=5)
 
 
-        
+# -------------------- FUnction of  Categories Section ----------------------------------------------------
+    def Categories(self,event=""):
+          # 1) BreakFAst
+          if self.Combo_Category.get()=="BreakFast":
+                self.ComboSubCategory.config(value=self.SubCategoryBreakFast)
+                self.ComboSubCategory.current(0)
+          # 2) Lunch      
+          if self.Combo_Category.get()=="Lunch":
+                self.ComboSubCategory.config(value=self.SubCategoryLunch)
+                self.ComboSubCategory.current(0)
+          # 2) Dinner
+          if self.Combo_Category.get()=="Dinner":
+                self.ComboSubCategory.config(value=self.SubCategoryDinner)
+                self.ComboSubCategory.current(0)
+# -------------------------------------- Function of Sub Categories Section ---------------------------------
+                # --- ---- Breakfast  Sub Categories name
+    def Product_add(self,event=""):
+        # 1) Eggs
+          if self.ComboSubCategory.get()=="Eggs":
+                self.ComboProduct.config(value=self.Eggs)
+                self.ComboProduct.current(0)
+        # 2) Parathas
+          if self.ComboSubCategory.get()=="Parathas":
+                self.ComboProduct.config(value=self.Parathas)
+                self.ComboProduct.current(0)
+        # 3) Tea
+          if self.ComboSubCategory.get()=="Tea":
+                self.ComboProduct.config(value=self.Tea)
+                self.ComboProduct.current(0)
+        # 4) Drinks
+          if self.ComboSubCategory.get()=="Drinks":
+                self.ComboProduct.config(value=self.Drinks)
+                self.ComboProduct.current(0)            
 
+                # --- --- Lunch Sub Categories name
+        # 4) Salads" 
+          if self.ComboSubCategory.get()=="Salads":  
+                self.ComboProduct.config(values=self.Salads)
+                self.ComboProduct.current(0)  
+        # 5 )"Pasta And Noodles
+          if self.ComboSubCategory.get()=="Pasta And Noodles":
+                self.ComboProduct.config(values=self.PastaAndNoodles)
+                self.ComboProduct.current(0) 
 
+                # --- --- Dinner Sub Categories name 
+        # 6) Chicken Dishes
+          if self.ComboSubCategory.get()=="Chicken Dishes":
+                self.ComboProduct.config(values=self.ChickenDishes)
+                self.ComboProduct.current(0)
+        # 7) Beef Dishes
+          if self.ComboSubCategory.get()=="Beef Dishes":
+                self.ComboProduct.config(values=self.BeefDishes)
+                self.ComboProduct.current(0)
+        # 8) Pizza's Varieties
+          if self.ComboSubCategory.get()=="Pizza's Varieties":
+                self.ComboProduct.config(values=self.PizzaVarieties)
+                self.ComboProduct.current(0)
+        # 7) Burgers
+          if self.ComboSubCategory.get()=="Burgurs":
+                self.ComboProduct.config(values=self.Burgurs)
+                self.ComboProduct.current(0)
 
 
 
