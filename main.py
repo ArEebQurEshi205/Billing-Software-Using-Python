@@ -7,8 +7,86 @@ class Bill_App:
         self.root=root
         self.root.geometry("1500x800+0+0")
         self.root.title("Billing Software")
+#--------------------#--------------------#--------Ux Section ------------#--------------------#--------------------      
+        #---- Product Categories List -----
+        self.Category=["Select Option","BreakFast","Lunch","Dinner"]
+        
+        # 1) Sub Category Part (BreakFast)
+        self.SubCategoryBreakFast=["Eggs","Parathas","Tea","Drinks"]
+        
+        # Product Name Part
+        # i)Eggs Part
+        self.Eggs=["Half Fry","Omlete","Cheese Omlete","Cheese Half Fry"]
+        self.price_HalfFry=50
+        self.price_Omlete=60
+        self.price_CheeseOmlete=150
+        self.price_CheeseHalfFry=160
+        # ii)Parathas Part
+        self.Parathas=["Lacha Paratha","Aloo Paratha","Chicken Paratha","Chicken Cheesen Paratha"]
+        self.price_LachaParatha=50
+        self.price_AlooParatha=100
+        self.price_ChickenParatha=180
+        self.price_ChickenCheeseParatha=260
+        # iii)Tea Part
+        self.Tea=["Doodh Patti Half","Doodh Patti Full","Green Tea"]
+        self.price_DoodhPattiHalf=40
+        self.price_DoodhPattiFull=70
+        self.price_GreenTea=80
+        # iv)Drinks Part
+        self.Drinks=["Cola Next 500ml","Cola Next 1liter","FizzUp 500ml","FizzUp 1liter","Red Apple 1.5liter","Pakola Water 1.5liter"]
+        self.price_ColaNext500ml= 80
+        self.price_ColaNext1liter= 160
+        self.price_Fizzup500ml= 80
+        self.price_Fizzup1liter= 160
+        self.price_RedApple=200
+        self.PakolaWater= 100 
 
 
+        # 2) Sub Category Part (Lunch)
+        self.SubCategoryLunch=["Salads","Pasta And Noodles"]
+
+        #Product Name Part
+        # i) Salads Part
+        self.Salads=["Green Salads","Pasta Salads","Specialty Salads"]
+        self.price_GreenSalads= 120 
+        self.price_PastaSalads= 140 
+        self.price_SpecialtySalads= 180 
+        # ii) Pasta And Noodles Part
+        self.PastaAndNoodles=["Italian Pasta","Asian Noodles","Fusion Creations"]
+        self.price_ItalianPasta= 220
+        self.Price_AsianNoodles= 250
+        self.price_FusionCreations= 280
+        
+        # 3) Sub Category Part (Dinner)
+        self.SubCategoryDinner=["Chicken Dishes","Beef Dishes","Pizza's Varieties","Burgers"]
+        #Product Name Part
+        # i) Chicken Dishes
+        self.ChickenDishes=["Chicken Qourma","Chicken Nihari","Chicken Karahi","Chicken Biryani","Chicken Puloa"]
+        self.price_ChickenQourma= 200
+        self.price_ChickenNihari= 240
+        self.price_ChickenKarahi= 270
+        self.price_ChickenBiryani= 300
+        self.price_ChickenPuloa= 280
+        # ii) Beef Dishes
+        self.BeefDishes=["Beef Qourma","Beef Nihari","Beef Biryani","Beef Puloa"]
+        self.price_BeefQourma= 200
+        self.price_BeefNihari= 240
+        self.price_BeefBiryani= 300
+        self.price_BeefPuloa= 280
+        # iii) Pizzas Varieties
+        self.PizzaVarieties=["Tikka","Fajita","Creamy"]
+        self.price_Tikka= 300
+        self.price_Fajita= 320
+        self.price_Creamy= 240
+        # iv) Burger
+        self.Burgers=["Zinger Burgur","Beef Burgur","Double Zinger Burgur"]
+        self.price_ZingerBurgur=250
+        self.price_BeefBurgur=280
+        self.price_DoubleZingerBurgur= 350
+
+
+        
+#--------------------#--------------------#-------- UI Section ------------#--------------------#--------------------
         # ----- ----- Image Section ----- ------
         # Image 1
         img=Image.open("image/frontImage1.png")
