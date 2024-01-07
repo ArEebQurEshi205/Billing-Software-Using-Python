@@ -150,7 +150,7 @@ class Bill_App:
         self.txtEmail=ttk.Entry(Cust_Frame,textvariable=self.c_email,font=('Courier New',10,'bold'),width=20)
         self.txtEmail.grid(row=2,column=1,sticky=W,padx=5,pady=2)
 # ---------------------------------------------------------------------------------------------------------#
-        # ----- ----- Product Frame ----- -----
+        # ----- ----- Product Frame ------ -----
         Product_Frame=LabelFrame(Main_Frame,text="Product:",font=('Courier New',13,'bold'),bg="black",fg="white",bd=8)
         Product_Frame.place(x=357,y=3,width=560,height=130)
         # Product Category
