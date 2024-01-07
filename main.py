@@ -1,13 +1,27 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk #pip install pillow
+import random
 
 class Bill_App:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1500x800+0+0")
         self.root.title("Billing Software")
-        
+#==================================> Variables <=============================================
+        self.c_name=StringVar()
+        self.c_phon=StringVar()
+        self.bill_no=StringVar()
+        z=random.randint(1000,9999)
+        self.bill_no.set(z)
+        self.c_email=StringVar()
+        self.search_bill=StringVar()
+        self.product=StringVar()
+        self.prices=IntVar()
+        self.qty=IntVar()
+        self.sub_total=StringVar()
+        self.tax_input=StringVar()
+        self.total=StringVar()   
 #--------------------#--------------------#--------Ux Section ------------#--------------------#--------------------      
         #---- Product Categories List -----
         self.Category=["Select Option","BreakFast","Lunch","Dinner"]
@@ -18,12 +32,12 @@ class Bill_App:
         # Product Name Part
         # i)Eggs Part
         self.Eggs=["Half Fry","Omlete","Cheese Omlete","Cheese Half Fry"]
-        self.price_HalfFry=50
+        self.price_HalfFry=100
         self.price_Omlete=60
         self.price_CheeseOmlete=150
         self.price_CheeseHalfFry=160
         # ii)Parathas Part
-        self.Parathas=["Lacha Paratha","Aloo Paratha","Chicken Paratha","Chicken Cheesen Paratha"]
+        self.Parathas=["Lacha Paratha","Aloo Paratha","Chicken Paratha","Chicken Cheese Paratha"]
         self.price_LachaParatha=50
         self.price_AlooParatha=100
         self.price_ChickenParatha=180
@@ -40,7 +54,7 @@ class Bill_App:
         self.price_Fizzup500ml= 80
         self.price_Fizzup1liter= 160
         self.price_RedApple=200
-        self.PakolaWater= 100 
+        self.price_PakolaWater= 100 
 
 
         # 2) Sub Category Part (Lunch)
@@ -123,17 +137,17 @@ class Bill_App:
         # Mobile Info Section 
         self.lbl_mob=Label(Cust_Frame,text="Mobile Number:",font=("Courier New",12,"bold"),bg="black",fg="white")
         self.lbl_mob.grid(row=0,column=0,stick=W,padx=5,pady=2)
-        self.entry_mob=ttk.Entry(Cust_Frame,font=("Courier New",10,"bold"),width=20)
+        self.entry_mob=ttk.Entry(Cust_Frame,textvariable=self.c_phon,font=("Courier New",10,"bold"),width=20)
         self.entry_mob.grid(row=0,column=1,padx=5,pady=2)
         # Customer Info Section
         self.lblCustName=Label(Cust_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Customer Name:",bd=4)
         self.lblCustName.grid(row=1,column=0,stick=W,padx=5,pady=2)
-        self.txtCustName=ttk.Entry(Cust_Frame,font=('Courier New',10,'bold'),width=20)
+        self.txtCustName=ttk.Entry(Cust_Frame,textvariable=self.c_name,font=('Courier New',10,'bold'),width=20)
         self.txtCustName.grid(row=1,column=1,sticky=W,padx=5,pady=2)
         # Gmail Info Section 
         self.lblEmail=Label(Cust_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Email:",bd=4)
         self.lblEmail.grid(row=2,column=0,stick=W,padx=5,pady=2)
-        self.txtEmail=ttk.Entry(Cust_Frame,font=('Courier New',10,'bold'),width=20)
+        self.txtEmail=ttk.Entry(Cust_Frame,textvariable=self.c_email,font=('Courier New',10,'bold'),width=20)
         self.txtEmail.grid(row=2,column=1,sticky=W,padx=5,pady=2)
 # ---------------------------------------------------------------------------------------------------------#
         # ----- ----- Product Frame ----- -----
@@ -155,17 +169,18 @@ class Bill_App:
         # Product Name 
         self.lblproduct=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Product Name:",bd=4)
         self.lblproduct.grid(row=2,column=0,stick=W,padx=5,pady=2)
-        self.ComboProduct=ttk.Combobox(Product_Frame,state="readonly",font=('arial',8,'bold'),width=24)
+        self.ComboProduct=ttk.Combobox(Product_Frame,textvariable=self.product,state="readonly",font=('arial',8,'bold'),width=24)
         self.ComboProduct.grid(row=2,column=1,stick=W,padx=5,pady=2)
+        self.ComboProduct.bind("<<ComboboxSelected>>",self.price)
         # Price
         self.Price=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Price:",bd=4)
         self.Price.grid(row=0,column=2,stick=W,padx=5,pady=2)
-        self.ComboPrice=ttk.Combobox(Product_Frame,state="readonly",font=('arial',5,'bold'),width=11)
-        self.ComboPrice.grid(row=0,column=3,stick=W,padx=5,pady=2)
+        self.ComboPrice=ttk.Combobox(Product_Frame,state="readonly",textvariable=self.prices,font=('arial',9,'bold'),width=7)
+        self.ComboPrice.grid(row=0,column=3,stick=W,padx=0,pady=2)
         # Quantity 
         self.lblQty=Label(Product_Frame,font=('Courier New',12,'bold'),bg="black",fg="white",text="Quantity:",bd=4)
         self.lblQty.grid(row=1,column=2,stick=W,padx=5,pady=2)
-        self.ComboQty=ttk.Entry(Product_Frame,font=('arial',6,'bold'),width=14)
+        self.ComboQty=ttk.Entry(Product_Frame,textvariable=self.qty,font=('arial',9,'bold'),width=7)
         self.ComboQty.grid(row=1,column=3,stick=W,padx=5,pady=2)
 # -------------------------------#----------------------#----------------------------# ------------------------#
         # ----- ----- Middle Frame ----- ----- 
@@ -185,7 +200,7 @@ class Bill_App:
         self.lblBill=Label(Search_Frame,font=('Courier New',13,'bold'),bg="black",fg="white",text="Bill No:")
         self.lblBill.grid(row=0,column=0,sticky=W,padx=9,pady=4)
         # Bill No Search Bar
-        self.txt_Entry_Search=ttk.Entry(Search_Frame,font=('arial',11,'bold'),width=19)
+        self.txt_Entry_Search=ttk.Entry(Search_Frame,textvariable=self.search_bill,font=('arial',11,'bold'),width=19)
         self.txt_Entry_Search.grid(row=0,column=1,sticky=W,padx=5,pady=5)  
         # Bill No Button
         self.BtnSearch=Button(Search_Frame,text="Search",font=('arial black',8,'bold'),bg="white",fg="black",width=10,cursor="hand2")
@@ -304,8 +319,222 @@ class Bill_App:
           if self.ComboSubCategory.get()=="Burgurs":
                 self.ComboProduct.config(values=self.Burgurs)
                 self.ComboProduct.current(0)
+# -------------------- FUnction of  Price Section ----------------------------------------------------
+    def price(self,event=""):
+          # ================>BreakFast Section Price set Code<==============
+          # 1) Eggs
+          # i) Half Fry Price set section
+          if self.ComboProduct.get()=="Half Fry":
+                self.ComboPrice.config(value=self.price_HalfFry)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # ii) Omlete Price set section
+          if self.ComboProduct.get()=="Omlete":
+                self.ComboPrice.config(value=self.price_Omlete)
+                self.ComboPrice.current(0)
+                self.qty.set(1)                   
+          # ii) CheeseOmlete Price set section 
+          if self.ComboProduct.get()=="Cheese Omlete":
+                self.ComboPrice.config(value=self.price_CheeseOmlete)
+                self.ComboPrice.current(0)
+                self.qty.set(1)                  
+          # ii) Cheese HAlfFry Price set section 
+          if self.ComboProduct.get()=="Cheese Half Fry":
+                self.ComboPrice.config(value=self.price_CheeseHalfFry)
+                self.ComboPrice.current(0)
+                self.qty.set(1)                 
+          
+          # 2) Parathas
+          # i) Lacha Paratha
+          if self.ComboProduct.get()=="Lacha Paratha":
+                self.ComboPrice.config(value=self.price_LachaParatha)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # ii) Aloo Paratha
+          if self.ComboProduct.get()=="Aloo Paratha":
+                self.ComboPrice.config(value=self.price_AlooParatha)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # iii) Chicken Paratha
+          if self.ComboProduct.get()=="Chicken Paratha":
+                self.ComboPrice.config(value=self.price_ChickenParatha)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # iv) Chicken Cheese Paratha
+          if self.ComboProduct.get()=="Chicken Cheese Paratha":
+                self.ComboPrice.config(value=self.price_ChickenCheeseParatha)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+        
+          # 3) Tea 
+          # i) Doodh Patti Half
+          if self.ComboProduct.get()=="Doodh Patti Half":
+                self.ComboPrice.config(value=self.price_DoodhPattiHalf)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # ii) Doodh patti Full
+          if self.ComboProduct.get()=="Doodh Patti Full":
+                self.ComboPrice.config(value=self.price_DoodhPattiFull)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # iii) Green Tea
+          if self.ComboProduct.get()=="Green Tea":
+                self.ComboPrice.config(value=self.price_GreenTea)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+        
+          # 4)Drinks
+          # i) Cola Next 500ml
+          if self.ComboProduct.get()=="Cola Next 500ml":
+                self.ComboPrice.config(value=self.price_ColaNext500ml)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # ii) Cola Next 1liter
+          if self.ComboProduct.get()=="Cola Next 1liter":
+                self.ComboPrice.config(value=self.price_ColaNext1liter)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # iii) FizzUp 500ml
+          if self.ComboProduct.get()=="FizzUp 500ml":
+                self.ComboPrice.config(value=self.price_Fizzup500ml)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # iv) FizzUp 1liter
+          if self.ComboProduct.get()=="FizzUp 1liter":
+                self.ComboPrice.config(value=self.price_Fizzup1liter)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # v) Red Apple 1.5liter
+          if self.ComboProduct.get()=="Red Apple 1.5liter":
+                self.ComboPrice.config(value=self.price_RedApple)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # vi) Pakola Water 1.5liter
+          if self.ComboProduct.get()=="Pakola Water 1.5liter":
+                self.ComboPrice.config(value=self.price_PakolaWater)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # ================>LUnch Section Price set Code<==============
+          # 1) Salads
+          # i) Green Salads 
+          if self.ComboProduct.get()=="Green Salads":
+                self.ComboPrice.config(value=self.price_GreenSalads)
+                self.ComboPrice.current(0)
+                self.qty.set(1)       
+          # ii) Pasta Salads
+          if self.ComboProduct.get()=="Pasta Salads":
+                self.ComboPrice.config(value=self.price_PastaSalads)
+                self.ComboPrice.current(0)
+                self.qty.set(1)
+          # iii) Specialty Salads
+          if self.ComboProduct.get()=="Specialty Salads":
+                self.ComboPrice.config(value=self.price_SpecialtySalads)
+                self.ComboPrice.current(0)
+                self.qty.set(1)
+                
+          # 2) Pasta And Noodles
+          # i) Italian Pasta 
+          if self.ComboProduct.get()=="Italian Pasta":
+                self.ComboPrice.config(value=self.price_ItalianPasta)
+                self.ComboPrice.current(0)
+                self.qty.set(1)
+          # ii) Asian Noodles 
+          if self.ComboProduct.get()=="Asian Noodles":
+                self.ComboPrice.config(value=self.Price_AsianNoodles)
+                self.ComboPrice.current(0)
+                self.qty.set(1)
+          # iii) Fusion Creations
+          if self.ComboProduct.get()=="Fusion Creations":
+                self.ComboPrice.config(value=self.price_FusionCreations)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+         
+          # ================>Dinner Section Price set Code<==============
+          # 1) Chicken Dishes
+          # i) Chicken Qourma
+          if self.ComboProduct.get()=="Chicken Qourma":
+                self.ComboPrice.config(value=self.price_ChickenQourma)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # ii) Chicken Nihari 
+          if self.ComboProduct.get()=="Chicken Nihari":
+                self.ComboPrice.config(value=self.price_ChickenNihari)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # iii) Chicken Karahi 
+          if self.ComboProduct.get()=="Chicken Karahi":
+                self.ComboPrice.config(value=self.price_ChickenKarahi)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # iv) Chicken Biryani 
+          if self.ComboProduct.get()=="Chicken Biryani":
+                self.ComboPrice.config(value=self.price_ChickenBiryani)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # v Chicken Puloa    
+          if self.ComboProduct.get()=="Chicken Puloa":
+                self.ComboPrice.config(value=self.price_ChickenPuloa)
+                self.ComboPrice.current(0)
+                self.qty.set(1)             
+          
+          # 2) Beef Dishes
+          # i) Beef Qourma
+          if self.ComboProduct.get()=="Beef Qourma":
+                self.ComboPrice.config(value=self.price_BeefQourma)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+          # ii) Beef Nihari 
+          if self.ComboProduct.get()=="Beef Nihari":
+                self.ComboPrice.config(value=self.price_BeefNihari)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # iii) Beef Biryani 
+          if self.ComboProduct.get()=="Beef Biryani":
+                self.ComboPrice.config(value=self.price_BeefBiryani)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # iv) Beef Puloa      
+          if self.ComboProduct.get()=="Beef Puloa":
+                self.ComboPrice.config(value=self.price_BeefPuloa)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
 
-
+          # 3) Pizza's Varieties
+          # i) Tikka
+          if self.ComboProduct.get()=="Tikka":
+                self.ComboPrice.config(value=self.price_Tikka)
+                self.ComboPrice.current(0)
+                self.qty.set(1)   
+          # ii) Fajita 
+          if self.ComboProduct.get()=="Fajita":
+                self.ComboPrice.config(value=self.price_Fajita)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # iii) Creamy 
+          if self.ComboProduct.get()=="Creamy":
+                self.ComboPrice.config(value=self.price_Creamy)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # 4) Burgurs
+          # i) Zinger Burgur 
+          if self.ComboProduct.get()=="Zinger Burgur":
+                self.ComboPrice.config(value=self.price_ZingerBurgur)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # ii) Beef Burgur 
+          if self.ComboProduct.get()=="Beef Burgur":
+                self.ComboPrice.config(value=self.price_BeefBurgur)
+                self.ComboPrice.current(0)
+                self.qty.set(1) 
+          # iii) Double Zinger Burgur
+          if self.ComboProduct.get()=="Double Zinger Burgur":
+                self.ComboPrice.config(value=self.price_DoubleZingerBurgur)
+                self.ComboPrice.current(0)
+                self.qty.set(1)  
+                
+                  
+        
+        
 
 if __name__ == '__main__':
     root=Tk()
