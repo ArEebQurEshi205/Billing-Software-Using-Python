@@ -414,7 +414,7 @@ class Bill_App:
                 self.ComboPrice.config(value=self.price_PakolaWater)
                 self.ComboPrice.current(0)
                 self.qty.set(1)  
-          # ================>LUnch Section Price set Code<==============
+          # ====================>LUnch Section Price set Code<==================
           # 1) Salads
           # i) Green Salads 
           if self.ComboProduct.get()=="Green Salads":
@@ -499,7 +499,7 @@ class Bill_App:
                 self.ComboPrice.current(0)
                 self.qty.set(1) 
 
-          # 3) Pizza's Varieties
+          # 3) Pizza's Varieties::
           # i) Tikka
           if self.ComboProduct.get()=="Tikka":
                 self.ComboPrice.config(value=self.price_Tikka)
