@@ -256,6 +256,19 @@ class Bill_App:
         # Button 6
         self.BtnExit=Button(Btn_Frame,height=2,text="Exit",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
         self.BtnExit.grid(row=0,column=5)
+        self.welcome()
+#  ------------------------------------------ BIll Recipt ------------------------------------------------
+    def welcome(self):
+          self.textarea.delete(1.0,END)
+          self.textarea.insert(END,"\t Welcome Our Restaurant")
+          self.textarea.insert(END,f"\n Bill Number:{self.bill_no.get()}")
+          self.textarea.insert(END,f"\n Customer Name:{self.c_name.get()}")
+          self.textarea.insert(END,f"\n Phone Number:{self.c_phon.get()}")
+          self.textarea.insert(END,f"\n Customer Email:{self.c_email.get()}")
+
+          self.textarea.insert(END,"\n===============================================")
+          self.textarea.insert(END,f"\n Prodcut\t\t\tQTY\tPrice")
+          self.textarea.insert(END,"\n===============================================")
 
 
 # -------------------- FUnction of  Categories Section ----------------------------------------------------
@@ -414,7 +427,7 @@ class Bill_App:
                 self.ComboPrice.config(value=self.price_PakolaWater)
                 self.ComboPrice.current(0)
                 self.qty.set(1)  
-          # ====================>LUnch Section Price set Code<==================
+          # ====================> LUnch Section Price set Code <==================
           # 1) Salads
           # i) Green Salads 
           if self.ComboProduct.get()=="Green Salads":
