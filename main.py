@@ -224,24 +224,24 @@ class Bill_App:
           # Sub total Section 
           self.lblSubTotal=Label(Bottom_Frame,font=('Courier New',14,'bold'),bg="black",fg="white",text="Sub Total:",bd=5)
           self.lblSubTotal.grid(row=0,column=0,sticky=W,padx=20,pady=2)
-          self.EntrySubTotal=ttk.Entry(Bottom_Frame,font=('arial',13,'bold'),width=17)
+          self.EntrySubTotal=ttk.Entry(Bottom_Frame,textvariable=self.sub_total,font=('arial',13,'bold'),width=17)
           self.EntrySubTotal.grid(row=0,column=1,sticky=W,padx=5,pady=2)
           # Tax total Section 
           self.lbl_tax=Label(Bottom_Frame,font=('Courier New',14,'bold'),bg="black",fg="white",text="Gov Tax:",bd=5)
           self.lbl_tax.grid(row=1,column=0,sticky=W,padx=20,pady=2)
-          self.txt_tax=ttk.Entry(Bottom_Frame,font=('arial',13,'bold'),width=17)
+          self.txt_tax=ttk.Entry(Bottom_Frame,textvariable=self.tax_input,font=('arial',13,'bold'),width=17)
           self.txt_tax.grid(row=1,column=1,sticky=W,padx=5,pady=2)
           # Total Section 
           self.lbl_Total=Label(Bottom_Frame,font=('Courier New',14,'bold'),bg="black",fg="white",text="Total:",bd=5)
           self.lbl_Total.grid(row=2,column=0,sticky=W,padx=20,pady=2)
-          self.txt_Total=ttk.Entry(Bottom_Frame,font=('arial',13,'bold'),width=17)
+          self.txt_Total=ttk.Entry(Bottom_Frame,textvariable=self.total,font=('arial',13,'bold'),width=17)
           self.txt_Total.grid(row=2,column=1,sticky=W,padx=5,pady=2)
 # ------  ------------------------------------------------------------------------------------------------------
           # ------ ---------Bill Section Button --------- ------
           Btn_Frame=Frame(Bottom_Frame,bd=5,bg="white")
           Btn_Frame.place(x=400,y=17)
           # Button 1
-          self.BtnAddToCart=Button(Btn_Frame,height=2,text="Add To Cart",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+          self.BtnAddToCart=Button(Btn_Frame,command=self.AddItem,height=2,text="Add To Cart",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnAddToCart.grid(row=0,column=0)
           # Button 2
           self.Btngenerate_bill=Button(Btn_Frame,height=2,text="Generate Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
@@ -263,10 +263,20 @@ class Bill_App:
           self.l=[]
 # ============================> Function Declaration <==============================
     def AddItem(self):
+          Tax=1
           self.n=self.prices.get()
           self.m=self.qty.get()*self.n
           self.l.append(self.m)
+          
           if self.product.get()=="":
+                messagebox.showerror("Error","Please Select the product Name")
+          else:
+               self.textarea.insert(END, f"\n {self.product.get()}\t\t{self.qty.get()}\t\t{self.m}")
+               self.sub_total.set(str('RS.%.2f' % (sum(self.l))))
+               self.tax_input.set(str('RS.%.2f' % ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))
+               self.total.set(str('RS.%.2f' % (((sum(self.l)) + ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))))
+
+
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
           self.textarea.delete(1.0,END)
