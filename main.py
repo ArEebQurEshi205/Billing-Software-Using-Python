@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk #pip install pillow
 import random
+from tkinter import messagebox
+
 
 class Bill_App:
     def __init__(self,root):
@@ -257,9 +259,14 @@ class Bill_App:
           self.BtnExit=Button(Btn_Frame,height=2,text="Exit",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnExit.grid(row=0,column=5)
           self.welcome()
-
-        # ============================> Function Declaration <==============================
-
+          
+          self.l=[]
+# ============================> Function Declaration <==============================
+    def AddItem(self):
+          self.n=self.prices.get()
+          self.m=self.qty.get()*self.n
+          self.l.append(self.m)
+          if self.product.get()=="":
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
           self.textarea.delete(1.0,END)
