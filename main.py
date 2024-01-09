@@ -244,7 +244,7 @@ class Bill_App:
           self.BtnAddToCart=Button(Btn_Frame,command=self.AddItem,height=2,text="Add To Cart",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnAddToCart.grid(row=0,column=0)
           # Button 2
-          self.Btngenerate_bill=Button(Btn_Frame,height=2,text="Generate Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+          self.Btngenerate_bill=Button(Btn_Frame,command=self.gen_bill,height=2,text="Generate Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.Btngenerate_bill.grid(row=0,column=1)
           # Button 3
           self.BtnSave=Button(Btn_Frame,height=2,text="Save Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
@@ -275,7 +275,20 @@ class Bill_App:
                self.sub_total.set(str('RS.%.2f' % (sum(self.l))))
                self.tax_input.set(str('RS.%.2f' % ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))
                self.total.set(str('RS.%.2f' % (((sum(self.l)) + ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))))
+    
 
+    def gen_bill(self):
+          if self.product.get()=="":
+                messagebox.showerror("Error","Please Add To Cart Product")
+          else:
+                text=self.textarea.get(10.0,(10.0+float(len(self.l))))
+                self.welcome()
+                self.textarea.insert(END,text)
+                self.textarea.insert(END,"\n===============================================")
+                self.textarea.insert(END,f"\n Sub Amount:\t\t\t{self.sub_total.get()}")      
+                self.textarea.insert(END,f"\n Tax Amount:\t\t\t{self.tax_input.get()}")      
+                self.textarea.insert(END,f"\n Total Amount:\t\t\t{self.total.get()}")   
+                self.textarea.insert(END,"\n===============================================")   
 
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
