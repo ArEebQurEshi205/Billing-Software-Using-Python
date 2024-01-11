@@ -3,6 +3,7 @@ from tkinter import ttk
 from PIL import Image,ImageTk #pip install pillow
 import random,os
 from tkinter import messagebox
+import tempfile
 
 
 class Bill_App:
@@ -250,7 +251,7 @@ class Bill_App:
           self.BtnSave=Button(Btn_Frame,command=self.save_bill,height=2,text="Save Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnSave.grid(row=0,column=2)
           # Button 4
-          self.BtnPrint=Button(Btn_Frame,height=2,text="Print",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+          self.BtnPrint=Button(Btn_Frame,command=self.iprint,height=2,text="Print",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnPrint.grid(row=0,column=3)
           # Button 5
           self.BtnClear=Button(Btn_Frame,height=2,text="Clear",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
@@ -300,6 +301,13 @@ class Bill_App:
                 f1.write(self.bill_data)
                 op=messagebox.showinfo("Saved",f"Bill No:{self.bill_no.get()} saved successfully")
                 f1.close()
+#  ------------------------------------------ Save BIll Function -------------------------------------------
+    def iprint(self):
+          q=self.textarea.get(1.0,"end-1c")
+          filename=tempfile.mktemp('.txt')
+          open(filename,'w').write(q)
+          os.startfile(filename,"print")
+
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
           self.textarea.delete(1.0,END)

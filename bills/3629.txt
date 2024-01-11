@@ -1,0 +1,15 @@
+	 Welcome Our Restaurant
+ Bill Number:3629
+ Customer Name:aeebew
+ Phone Number:8412783
+ Customer Email:3094i@gmail.com
+===============================================
+ Prodcut			QTY	Price
+=============================================== Creamy		1		240
+ Creamy		9		2160
+
+===============================================
+ Sub Amount:			RS.5900.00
+ Tax Amount:			RS.56.60
+ Total Amount:			RS.5956.60
+===============================================

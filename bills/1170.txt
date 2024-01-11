@@ -1,0 +1,27 @@
+	 Welcome Our Restaurant
+ Bill Number:1170
+ Customer Name:
+ Phone Number:
+ Customer Email:
+===============================================
+ Prodcut			QTY	Price
+=============================================== Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+
+===============================================
+ Sub Amount:			RS.1050.00
+ Tax Amount:			RS.9.80
+ Total Amount:			RS.1059.80
+===============================================
