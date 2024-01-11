@@ -262,6 +262,8 @@ class Bill_App:
           
           self.l=[]
 # ============================> Function Declaration <==============================
+#  -------------------------------------- Add Item  Function -------------------------------------------
+
     def AddItem(self):
           Tax=1
           self.n=self.prices.get()
@@ -276,7 +278,7 @@ class Bill_App:
                self.tax_input.set(str('RS.%.2f' % ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))
                self.total.set(str('RS.%.2f' % (((sum(self.l)) + ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))))
     
-
+#  ---------------------------------------- Generate BIll Function -------------------------------------------
     def gen_bill(self):
           if self.product.get()=="":
                 messagebox.showerror("Error","Please Add To Cart Product")
@@ -289,7 +291,7 @@ class Bill_App:
                 self.textarea.insert(END,f"\n Tax Amount:\t\t\t{self.tax_input.get()}")      
                 self.textarea.insert(END,f"\n Total Amount:\t\t\t{self.total.get()}")   
                 self.textarea.insert(END,"\n===============================================")   
-#  ------------------------------------------ Save BIll Recipt ------------------------------------------------
+#  ------------------------------------------ Save BIll Function -------------------------------------------
     def save_bill(self):
           op=messagebox.askyesno("Save Bill","Do you want to save the bill")
           if op>0:
