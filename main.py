@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk #pip install pillow
-import random
+import random,os
 from tkinter import messagebox
 
 
@@ -247,7 +247,7 @@ class Bill_App:
           self.Btngenerate_bill=Button(Btn_Frame,command=self.gen_bill,height=2,text="Generate Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.Btngenerate_bill.grid(row=0,column=1)
           # Button 3
-          self.BtnSave=Button(Btn_Frame,height=2,text="Save Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+          self.BtnSave=Button(Btn_Frame,command=self.save_bill,height=2,text="Save Bill",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnSave.grid(row=0,column=2)
           # Button 4
           self.BtnPrint=Button(Btn_Frame,height=2,text="Print",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
@@ -271,7 +271,7 @@ class Bill_App:
           if self.product.get()=="":
                 messagebox.showerror("Error","Please Select the product Name")
           else:
-               self.textarea.insert(END, f"\n {self.product.get()}\t\t{self.qty.get()}\t\t{self.m}")
+               self.textarea.insert(END,f"\n {self.product.get()}\t\t{self.qty.get()}\t\t{self.m}")
                self.sub_total.set(str('RS.%.2f' % (sum(self.l))))
                self.tax_input.set(str('RS.%.2f' % ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))
                self.total.set(str('RS.%.2f' % (((sum(self.l)) + ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))))
@@ -289,7 +289,15 @@ class Bill_App:
                 self.textarea.insert(END,f"\n Tax Amount:\t\t\t{self.tax_input.get()}")      
                 self.textarea.insert(END,f"\n Total Amount:\t\t\t{self.total.get()}")   
                 self.textarea.insert(END,"\n===============================================")   
-
+#  ------------------------------------------ Save BIll Recipt ------------------------------------------------
+    def save_bill(self):
+          op=messagebox.askyesno("Save Bill","Do you want to save the bill")
+          if op>0:
+                self.bill_data=self.textarea.get(1.0,END)
+                f1=open('bills/'+str(self.bill_no.get())+".txt",'w')
+                f1.write(self.bill_data)
+                op=messagebox.showinfo("Saved",f"Bill No:{self.bill_no.get()} saved successfully")
+                f1.close()
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
           self.textarea.delete(1.0,END)
