@@ -1,0 +1,15 @@
+	 Welcome Our Restaurant
+ Bill Number:4433
+ Customer Name:
+ Phone Number:
+ Customer Email:
+===============================================
+ Prodcut			QTY	Price
+=============================================== Asian Noodles			1	250
+ Asian Noodles			1	250
+
+===============================================
+ Sub Amount:			RS.750.00
+ Tax Amount:			RS.5.00
+ Total Amount:			RS.755.00
+===============================================

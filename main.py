@@ -274,7 +274,7 @@ class Bill_App:
           if self.product.get()=="":
                 messagebox.showerror("Error","Please Select the product Name")
           else:
-               self.textarea.insert(END,f"\n {self.product.get()}\t\t{self.qty.get()}\t\t{self.m}")
+               self.textarea.insert(END,f"\n {self.product.get()}\t\t\t{self.qty.get()}\t{self.m}")
                self.sub_total.set(str('RS.%.2f' % (sum(self.l))))
                self.tax_input.set(str('RS.%.2f' % ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))
                self.total.set(str('RS.%.2f' % (((sum(self.l)) + ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))))
