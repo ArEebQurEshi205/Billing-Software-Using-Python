@@ -328,6 +328,17 @@ class Bill_App:
           self.c_name.set("")
           self.c_phon.set("")
           self.c_email.set("")
+          x=random.randint(1000,9999)
+          self.bill_no.set(str(x))
+          self.search_bill.set("")
+          self.product.set("")
+          self.prices.set(0)
+          self.qty.set(0)
+          self.l=[0]
+          self.total.set("")
+          self.sub_total.set("")
+          self.tax_input.set("")
+          self.welcome()
 
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
