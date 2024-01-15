@@ -1,0 +1,19 @@
+	 Welcome Our Restaurant
+ Bill Number:2221
+ Customer Name:Areeb Qureshi 
+ Phone Number:03160322477
+ Customer Email:areeb@gmail.com
+===============================================
+ Prodcut			QTY	Price
+=============================================== Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+ Doodh Patti Full		1		70
+
+===============================================
+ Sub Amount:			RS.8310.00
+ Tax Amount:			RS.82.10
+ Total Amount:			RS.8392.10
+===============================================
+

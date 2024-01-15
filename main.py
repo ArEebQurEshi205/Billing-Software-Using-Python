@@ -206,7 +206,7 @@ class Bill_App:
           self.txt_Entry_Search=ttk.Entry(Search_Frame,textvariable=self.search_bill,font=('arial',11,'bold'),width=19)
           self.txt_Entry_Search.grid(row=0,column=1,sticky=W,padx=5,pady=5)  
           # Bill No Button
-          self.BtnSearch=Button(Search_Frame,text="Search",font=('arial black',8,'bold'),bg="white",fg="black",width=10,cursor="hand2")
+          self.BtnSearch=Button(Search_Frame,command=self.find_bill,text="Search",font=('arial black',8,'bold'),bg="white",fg="black",width=10,cursor="hand2")
           self.BtnSearch.grid(row=0,column=2,padx=15,pady=1)  
 # ------  --------------------------------#---------------------------------#----------------------------------#      
           # ---------- Right Frame Bill Section ----------------
@@ -254,7 +254,7 @@ class Bill_App:
           self.BtnPrint=Button(Btn_Frame,command=self.iprint,height=2,text="Print",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnPrint.grid(row=0,column=3)
           # Button 5
-          self.BtnClear=Button(Btn_Frame,height=2,text="Clear",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+          self.BtnClear=Button(Btn_Frame,command=self.clear,height=2,text="Clear",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnClear.grid(row=0,column=4)
           # Button 6
           self.BtnExit=Button(Btn_Frame,height=2,text="Exit",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
@@ -291,7 +291,7 @@ class Bill_App:
                 self.textarea.insert(END,f"\n Sub Amount:\t\t\t{self.sub_total.get()}")      
                 self.textarea.insert(END,f"\n Tax Amount:\t\t\t{self.tax_input.get()}")      
                 self.textarea.insert(END,f"\n Total Amount:\t\t\t{self.total.get()}")   
-                self.textarea.insert(END,"\n===============================================")   
+                self.textarea.insert(END,"\n===============================================\n")   
 #  ------------------------------------------ Save BIll Function -------------------------------------------
     def save_bill(self):
           op=messagebox.askyesno("Save Bill","Do you want to save the bill")
@@ -307,6 +307,27 @@ class Bill_App:
           filename=tempfile.mktemp('.txt')
           open(filename,'w').write(q)
           os.startfile(filename,"print")
+
+#  ------------------------------------------ Finding  BIll Function -------------------------------------------
+          
+    def find_bill(self):
+          found="no"
+          for i in os.listdir("bills/"):
+                if i.split('.')[0]==self.search_bill.get():
+                      f1=open(f'bills/{i}','r')
+                      self.textarea.delete(1.0,END)
+                      for d in f1:
+                            self.textarea.insert(END,d)
+                      f1.close()
+                      found="yes"
+          if found=='no':
+                messagebox.showerror("Error","Invalid Bill No.")
+#  ------------------------------------------ cLEAR  BIll Function -------------------------------------------
+    def clear(self):
+          self.textarea.delete(1.0,END)
+          self.c_name.set("")
+          self.c_phon.set("")
+          self.c_email.set("")
 
 #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
@@ -596,8 +617,7 @@ class Bill_App:
                 self.ComboPrice.current(0)
                 self.qty.set(1)  
                 
-                  
-        
+                          
         
 
 if __name__ == '__main__':
