@@ -602,7 +602,7 @@ class Bill_App:
                 self.qty.set(1) 
          
           
-          # ================>Dinner Section Price set Code<==============
+          # ==================> Dinner Section Price set Code <================
           # 1) Chicken Dishes
           # i) Chicken Qourma
           if self.ComboProduct.get()=="Chicken Qourma":
