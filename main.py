@@ -257,7 +257,7 @@ class Bill_App:
           self.BtnClear=Button(Btn_Frame,command=self.clear,height=2,text="Clear",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnClear.grid(row=0,column=4)
           # Button 6
-          self.BtnExit=Button(Btn_Frame,height=2,text="Exit",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
+          self.BtnExit=Button(Btn_Frame,command=self.root.destroy,height=2,text="Exit",font=('arial black',10,'bold'),bg="black",fg="white",width=15,cursor="hand2")
           self.BtnExit.grid(row=0,column=5)
           self.welcome()
           

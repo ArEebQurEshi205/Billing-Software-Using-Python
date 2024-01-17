@@ -1,0 +1,16 @@
+	 Welcome Our Restaurant
+ Bill Number:6791
+ Customer Name:`40i`1`
+ Phone Number:194`2p9i1
+ Customer Email:50i0
+===============================================
+ Prodcut			QTY	Price
+=============================================== Lacha Paratha			14	700
+ Doodh Patti Half			14	560
+
+===============================================
+ Sub Amount:			RS.2100.00
+ Tax Amount:			RS.20.60
+ Total Amount:			RS.2120.60
+===============================================
+

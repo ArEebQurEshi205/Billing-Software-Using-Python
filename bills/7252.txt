@@ -1,0 +1,17 @@
+	 Welcome Our Restaurant
+ Bill Number:7252
+ Customer Name:
+ Phone Number:
+ Customer Email:
+===============================================
+ Prodcut			QTY	Price
+=============================================== Fajita			1	320
+ Tikka			16	4800
+ Creamy			1	240
+
+===============================================
+ Sub Amount:			RS.8960.00
+ Tax Amount:			RS.87.20
+ Total Amount:			RS.9047.20
+===============================================
+

@@ -1,0 +1,18 @@
+	 Welcome Our Restaurant
+ Bill Number:4604
+ Customer Name:
+ Phone Number:
+ Customer Email:
+===============================================
+ Prodcut			QTY	Price
+=============================================== Chicken Paratha			19	3420
+ Chicken Cheese Paratha			19	4940
+ Green Tea			18	1440
+ Doodh Patti Full			100	7000
+
+===============================================
+ Sub Amount:			RS.18700.00
+ Tax Amount:			RS.186.30
+ Total Amount:			RS.18886.30
+===============================================
+
