@@ -566,7 +566,7 @@ class Bill_App:
                 self.qty.set(1)  
           
           
-          # ====================> LUnch Section Price set Code <==================
+          # ======================?> LUnch Section Price set Code <====================
           # 1) Salads
           # i) Green Salads 
           if self.ComboProduct.get()=="Green Salads":
