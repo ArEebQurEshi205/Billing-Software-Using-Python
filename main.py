@@ -5,7 +5,6 @@ import random,os
 from tkinter import messagebox
 import tempfile
 
-
 class Bill_App:
     def __init__(self,root):
           self.root=root
@@ -25,7 +24,7 @@ class Bill_App:
           self.sub_total=StringVar()
           self.tax_input=StringVar()
           self.total=StringVar()   
-#--------------------#--------------------#--------Ux Section ------------#--------------------#--------------------      
+#  =========================> Ux Section <==================================    
           #---- Product Categories List -----
           self.Category=["Select Option","BreakFast","Lunch","Dinner"]
         
@@ -104,7 +103,7 @@ class Bill_App:
 
 
         
-#--------------------#--------------------#-------- UI Section ------------#--------------------#--------------------
+#============================================> UI Section <=========================================================
           # ----- ----- Image Section ----- ------
           # Image 1
           img=Image.open("image/frontImage1.png")
@@ -133,7 +132,7 @@ class Bill_App:
           Main_Frame=Frame(self.root,bd=9,relief=GROOVE,bg="white")
           Main_Frame.place(x=0,y=150,width=1360,height=550)
 
-# ---------------------------------------------------------------------------------------------------------#
+# << ======================================================================================================================================>>
           # ----- ----- Customer Frame ----- -----
           Cust_Frame=LabelFrame(Main_Frame,text="Customer Details:",font=("Courier New",12,"bold"),bg="Black",fg="white",bd=8)
           Cust_Frame.place(x=-1,y=3,width=355,height=130)       
@@ -152,7 +151,9 @@ class Bill_App:
           self.lblEmail.grid(row=2,column=0,stick=W,padx=5,pady=2)
           self.txtEmail=ttk.Entry(Cust_Frame,textvariable=self.c_email,font=('Courier New',10,'bold'),width=20)
           self.txtEmail.grid(row=2,column=1,sticky=W,padx=5,pady=2)
-# ------  ---------------------------------------------------------------------------------------------------#
+
+          #  <<<<<<<<<  ====================  -----------------------------  =================  >>>>>>>>>>
+
           # ----- ----- Product Frame ------ -----
           Product_Frame=LabelFrame(Main_Frame,text="Product:",font=('Courier New',13,'bold'),bg="black",fg="white",bd=8)
           Product_Frame.place(x=357,y=3,width=560,height=130)
@@ -185,7 +186,9 @@ class Bill_App:
           self.lblQty.grid(row=1,column=2,stick=W,padx=5,pady=2)
           self.ComboQty=ttk.Entry(Product_Frame,textvariable=self.qty,font=('arial',9,'bold'),width=7)
           self.ComboQty.grid(row=1,column=3,stick=W,padx=5,pady=2)
-# ------  -------------------------#----------------------#----------------------------# ------------------------#
+
+          #  <<<<<<<<<  ====================  -----------------------------  =================  >>>>>>>>>>
+
           # ----- ----- Middle Frame ----- ----- 
           MiddleFrame=Frame(Main_Frame,bd=10,bg="black")
           MiddleFrame.place(x=2,y=137,width=915,height=247)
@@ -195,7 +198,9 @@ class Bill_App:
           self.photomiddleimg=ImageTk.PhotoImage(middleimg)
           lbl_middleimg=Label(MiddleFrame,image=self.photomiddleimg)
           lbl_middleimg.place(x=-4.5,y=-4.5,width=905,height=237)
-#-------  ----------------------------------------------------------------------------------------------------
+
+          #  <<<<<<<<<  ====================  -----------------------------  =================  >>>>>>>>>>
+
           # --------- Search Section --------
           Search_Frame=Frame(Main_Frame,bd=2,bg="black")
           Search_Frame.place(x=923,y=2,width=413,height=38.5)  
@@ -208,7 +213,9 @@ class Bill_App:
           # Bill No Button
           self.BtnSearch=Button(Search_Frame,command=self.find_bill,text="Search",font=('arial black',8,'bold'),bg="white",fg="black",width=10,cursor="hand2")
           self.BtnSearch.grid(row=0,column=2,padx=15,pady=1)  
-# ------  --------------------------------#---------------------------------#----------------------------------#      
+
+          #  <<<<<<<<<  ====================  -----------------------------  =================  >>>>>>>>>>
+     
           # ---------- Right Frame Bill Section ----------------
           RighLabelFrame=LabelFrame(Main_Frame,text="Bill Section:",font=("Courier New",14,"bold"),bg="black",fg="white",bd=6)
           RighLabelFrame.place(x=921,y=45,width=415,height=340)
@@ -218,7 +225,9 @@ class Bill_App:
           scroll_y.pack(side=RIGHT,fill=Y)
           scroll_y.config(command=self.textarea.yview)
           self.textarea.pack(fill=BOTH,expand=1)
-# ------  ------------------------------------------------------------------------------------------------------
+
+          #  <<<<<<<<<  ====================  -----------------------------  =================  >>>>>>>>>>
+
           # ------------- Bill Counter  Section --------------
           Bottom_Frame=LabelFrame(Main_Frame,text="Bill Recipt",font=("Courier New",15,"bold"),bg="black",fg="white")
           Bottom_Frame.place(x=2,y=390,width=1335,height=139)
@@ -237,7 +246,9 @@ class Bill_App:
           self.lbl_Total.grid(row=2,column=0,sticky=W,padx=20,pady=2)
           self.txt_Total=ttk.Entry(Bottom_Frame,textvariable=self.total,font=('arial',13,'bold'),width=17)
           self.txt_Total.grid(row=2,column=1,sticky=W,padx=5,pady=2)
-# ------  ------------------------------------------------------------------------------------------------------
+
+          #  <<<<<<<<<  ====================  -----------------------------  =================  >>>>>>>>>>
+
           # ------ ---------Bill Section Button --------- ------
           Btn_Frame=Frame(Bottom_Frame,bd=5,bg="white")
           Btn_Frame.place(x=400,y=17)
@@ -262,8 +273,10 @@ class Bill_App:
           self.welcome()
           
           self.l=[]
-# =============================> Function Declaration <================================
-#  -------------------------------------- Add Item Function -------------------------------------------
+
+           # =============================> Function Declaration <================================
+           
+           #  -------------------------------------- Add Item Function -------------------------------------------
 
     def AddItem(self):
           Tax=1
@@ -279,7 +292,7 @@ class Bill_App:
                self.tax_input.set(str('RS.%.2f' % ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))
                self.total.set(str('RS.%.2f' % (((sum(self.l)) + ((((sum(self.l)) - (self.prices.get())) *Tax) / 100)))))
     
-#  ---------------------------------------- Generate BIll Function -------------------------------------------
+            #  ---------------------------------------- Generate BIll Function -------------------------------------------
     def gen_bill(self):
           if self.product.get()=="":
                 messagebox.showerror("Error","Please Add To Cart Product")
@@ -292,7 +305,7 @@ class Bill_App:
                 self.textarea.insert(END,f"\n Tax Amount:\t\t\t{self.tax_input.get()}")      
                 self.textarea.insert(END,f"\n Total Amount:\t\t\t{self.total.get()}")   
                 self.textarea.insert(END,"\n===============================================\n")   
-#  ------------------------------------------ Save BIll Function -------------------------------------------
+            #  ------------------------------------------ Save BIll Function -------------------------------------------
     def save_bill(self):
           op=messagebox.askyesno("Save Bill","Do you want to save the bill")
           if op>0:
@@ -301,14 +314,14 @@ class Bill_App:
                 f1.write(self.bill_data)
                 op=messagebox.showinfo("Saved",f"Bill No:{self.bill_no.get()} saved successfully")
                 f1.close()
-#  ------------------------------------------ Save BIll Function -------------------------------------------
+             #  ------------------------------------------ Save BIll Function -------------------------------------------
     def iprint(self):
           q=self.textarea.get(1.0,"end-1c")
           filename=tempfile.mktemp('.txt')
           open(filename,'w').write(q)
           os.startfile(filename,"print")
 
-#  ------------------------------------------ Finding  BIll Function -------------------------------------------
+             #  ------------------------------------------ Finding  BIll Function -------------------------------------------
           
     def find_bill(self):
           found="no"
@@ -322,7 +335,8 @@ class Bill_App:
                       found="yes"
           if found=='no':
                 messagebox.showerror("Error","Invalid Bill No.")
-#  ------------------------------------------ cLEAR  BIll Function -------------------------------------------
+             
+             #  ------------------------------------------ cLEAR  BIll Function -------------------------------------------
     def clear(self):
           self.textarea.delete(1.0,END)
           self.c_name.set("")
@@ -340,7 +354,7 @@ class Bill_App:
           self.tax_input.set("")
           self.welcome()
 
-#  ------------------------------------------ BIll Recipt ------------------------------------------------
+           #  ------------------------------------------ BIll Recipt ------------------------------------------------
     def welcome(self):
           self.textarea.delete(1.0,END)
           self.textarea.insert(END,"\t Welcome Our Restaurant")
@@ -354,7 +368,7 @@ class Bill_App:
           self.textarea.insert(END,"\n===============================================")
 
 
-# -------------------- FUnction of  Categories Section ----------------------------------------------------
+           # -------------------- FUnction of  Categories Section ----------------------------------------------------
     def Categories(self,event=""):
           # 1) BreakFAst
           if self.Combo_Category.get()=="BreakFast":
@@ -368,7 +382,7 @@ class Bill_App:
           if self.Combo_Category.get()=="Dinner":
                 self.ComboSubCategory.config(value=self.SubCategoryDinner)
                 self.ComboSubCategory.current(0)
-# -------------------------------------- Function of Sub Categories Section ---------------------------------
+           # -------------------------------------- Function of Sub Categories Section ---------------------------------
                 # --- ---- Breakfast  Sub Categories name
     def Product_add(self,event=""):
         # 1) Eggs
